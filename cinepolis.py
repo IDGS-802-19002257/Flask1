@@ -12,6 +12,7 @@ def index():
         'boletas': '',
         'errores': '',
         'total': '',
+        'exito': ''
     }
     return render_template('cinepolis.html', datos = datos)
 
@@ -23,6 +24,7 @@ def procesar():
     boletas = int(request.form.get('boletas'))
     total = 0
     errores = []
+    exito = []
     
     if (boletas > compradores * 7):
         errores.append('No se pueden comprar mas de 7 boletas por persona.')
@@ -40,12 +42,15 @@ def procesar():
 
         total = total - total * descuento
 
+        exito.append('{} compró {} boleta(s)\nTotal: {}'.format(nombre, boletas, total))
+
     datos = {
         'nombre': nombre,
         'compradores': compradores,
         'tarjeta': tarjeta,
         'boletas': boletas,
         'errores': errores,
+        'exito': exito,
         'total': total,
     }
 

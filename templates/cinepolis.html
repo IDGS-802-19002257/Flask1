@@ -67,6 +67,11 @@
                 <div class="alert alert-error">{{ error }}</div>
                 {% endfor %}
             {% endif %}
+            {% if datos['exito'] %}
+                {% for exito in datos['exito'] %}
+                    <div class="alert alert-success">{{ exito }}</div>
+                {% endfor %}
+            {% endif %}
             <ul class="thumbnails">
                 <li class="span12 text-center">
                     <fieldset>
